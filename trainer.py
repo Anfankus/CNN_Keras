@@ -1,5 +1,11 @@
 import tensorflow as tf
 import tensorflow.keras as k
+
+"""
+ Trainer  负责设置训练过程，包括训练循环、forward调用、损失计算、优化器；
+          同样的也负责test、validation过程
+  对于特定的模型或任务应创建对应的训练器Trainer
+"""
 class Trainer:
   def __init__(self,model:k.Model):
     self.model = model
@@ -35,7 +41,7 @@ class Trainer:
         f'Test Accuracy: {self.test_acc_metric.result() * 100}'
       )
 
-  # @tf.function
+  @tf.function
   def train_step(self, img, label):
       with tf.GradientTape() as tape:
           predict = self.model(img)

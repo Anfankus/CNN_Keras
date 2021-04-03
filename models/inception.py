@@ -44,9 +44,25 @@ class InceptionV1(k.Model):
     x = InceptionLayer(x1=128, reduce_x3=128, x3=192, reduce_x5=32, x5=96, pool_proj=64)(x)
     x = MaxPooling2D(pool_size=3, strides=2, padding="same")(x)
     x = InceptionLayer(x1=192, reduce_x3=96, x3=208, reduce_x5=16, x5=48, pool_proj=64)(x)
+
+    auxiliary1 = AveragePooling2D(pool_size=5, strides=3)(x)
+    auxiliary1 = Conv2D(128, (1,1), (1,1), "same", activation="relu", kernel_initializer="normal")(auxiliary1)
+    auxiliary1 = Flatten()(auxiliary1)
+    auxiliary1 = Dense(units=1024, activation="relu")(auxiliary1)
+    auxiliary1 = Dropout(rate = 0.7)(auxiliary1, training=training)
+    auxiliary1 = Dense(units = self.num_classes, activation="softmax")(auxiliary1)
+
     x = InceptionLayer(x1=160, reduce_x3=112, x3=224, reduce_x5=24, x5=64, pool_proj=64)(x)
     x = InceptionLayer(x1=128, reduce_x3=128, x3=256, reduce_x5=24, x5=24, pool_proj=64)(x)
     x = InceptionLayer(x1=112, reduce_x3=144, x3=288, reduce_x5=32, x5=64, pool_proj=64)(x)
+
+    auxiliary2 = AveragePooling2D(pool_size=5, strides=3)(x)
+    auxiliary2 = Conv2D(128, (1,1), (1,1), "same", activation="relu", kernel_initializer="normal")(auxiliary2)
+    auxiliary2 = Flatten()(auxiliary2)
+    auxiliary2 = Dense(units=1024, activation="relu")(auxiliary2)
+    auxiliary2 = Dropout(rate = 0.7)(auxiliary2, training=training)
+    auxiliary2 = Dense(units = self.num_classes, activation="softmax")(auxiliary2)
+
     x = InceptionLayer(x1=256, reduce_x3=160, x3=320, reduce_x5=32, x5=128, pool_proj=128)(x)
     x = MaxPooling2D(pool_size=3, strides=2, padding="same")(x)
     x = InceptionLayer(x1=256, reduce_x3=160, x3=320, reduce_x5=32, x5=128, pool_proj=128)(x)
@@ -56,5 +72,5 @@ class InceptionV1(k.Model):
     x = Flatten()(x)
     x = Dense(units = self.num_classes , activation="softmax")(x)
 
-    return x
+    return x #, auxiliary1, auxiliary2
 

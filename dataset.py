@@ -28,7 +28,7 @@ class Dataset:
 
     self.train_ds = tf.data.Dataset.from_tensor_slices((x_train_frame,y_train))
     self.train_ds = self.train_ds.shuffle(buffer_size=10000)
-    self.train_ds = self.train_ds.batch(batch_size=5)
+    self.train_ds = self.train_ds.batch(batch_size=1)
 
-    self.test_ds = tf.data.Dataset.from_tensor_slices((x_test_frame,y_test)).batch(batch_size=10)
+    self.test_ds = tf.data.Dataset.from_tensor_slices((x_test_frame,y_test)).batch(batch_size=1)
 

@@ -44,7 +44,7 @@ class Trainer:
   @tf.function
   def train_step(self, img, label):
       with tf.GradientTape() as tape:
-          predict = self.model(img)
+          predict= self.model(img)[0]
           loss = self.loss(label, predict)
       grads = tape.gradient(loss, self.model.trainable_weights)
       self.optimizer.apply_gradients(zip(grads, self.model.trainable_weights))
@@ -54,7 +54,7 @@ class Trainer:
   
   @tf.function
   def test_step(self, img, label):
-      predict = self.model(img)  
+      predict = self.model(img, training = False)  
       loss = self.loss(label, predict)
 
       self.test_loss_metric(loss)

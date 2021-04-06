@@ -1,10 +1,12 @@
-"""
-@cite Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. "Imagenet classification with deep convolutional neural networks." Advances in neural information processing systems 25 (2012): 1097-1105.
-"""
-
 import tensorflow as tf
 import tensorflow.keras as k
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
+
+"""
+  AlexNet implementation according to "Imagenet classification with deep convolutional neural networks."
+
+  input_shape : the image shape, default is (224,224,3)
+"""
 
 def AlexNet(input_shape, num_classes):
   model = k.models.Sequential(

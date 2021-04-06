@@ -6,6 +6,12 @@ import tensorflow as tf
 import tensorflow.keras as k
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 
+"""
+  VGG16/19 implemention according to 'Very Deep Convolutional Networks for Large-Scale Image Recognition'
+
+  input_shape : the image shape, default is (299,299,3)
+"""
+
 def VGG16(input_shape, num_classes):
   model = k.models.Sequential(
     [

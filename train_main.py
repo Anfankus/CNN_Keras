@@ -11,7 +11,7 @@ physical_devices = tf.config.list_physical_devices('GPU')
 tf.config.experimental.set_memory_growth(physical_devices[0], enable=True)
 
 if __name__ == "__main__":
-    image_shape = (299,299,3)
+    image_shape = (224,224,3)
     num_classes = 1000
 
     mydata = Dataset()

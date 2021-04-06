@@ -1,5 +1,5 @@
 ## CNN Keras
-This is a repo which includes a set of basic implementations of CNN models in Keras
+This is a repo which includes a set of basic implementations of popular CNN models in Keras
 
 ### currently included models:
 | name    | reference                                                                                                                                                            |
@@ -7,6 +7,7 @@ This is a repo which includes a set of basic implementations of CNN models in Ke
 | AlexNet | [ImageNet Classification with Deep Convolutional Neural Networks](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks) |
 |VGG16/19|[Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/abs/1409.1556)|
 |InceptionV1|[Going Deeper with Convolutions](https://arxiv.org/abs/1409.4842)|
+|InceptionV3|[Rethinking the Inception Architecture for Computer Vision](https://arxiv.org/abs/1512.00567)|
 
 some others will be added later
 

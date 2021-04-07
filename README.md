@@ -8,6 +8,7 @@ This is a repo which includes a set of basic implementations of popular CNN mode
 |VGG16/19|[Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/abs/1409.1556)|
 |InceptionV1|[Going Deeper with Convolutions](https://arxiv.org/abs/1409.4842)|
 |InceptionV3|[Rethinking the Inception Architecture for Computer Vision](https://arxiv.org/abs/1512.00567)|
+|Resnet34/50/101|[Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)|
 
 some others will be added later
 

@@ -5,6 +5,7 @@ from models.simple_cnn import SimpleCNN
 from models.alexnet import AlexNet
 from models.vgg import VGG16, VGG19
 from models.inception import InceptionV1, InceptionV3
+from models.resnet import ResNet50, ResNet101, ResNet34
 from trainer import Trainer
 
 physical_devices = tf.config.list_physical_devices('GPU')
@@ -15,10 +16,10 @@ if __name__ == "__main__":
     num_classes = 1000
 
     mydata = Dataset()
-    mynet = InceptionV1(image_shape, num_classes)
+    mynet = ResNet34(image_shape, num_classes)
 
     print(mynet.summary())
-    tf.keras.utils.plot_model(mynet,to_file="plots/InceptionV1.png",show_shapes=True)
+    tf.keras.utils.plot_model(mynet,to_file="plots/ResNet34.png",show_shapes=True)
     
     # mytrainer = Trainer(mynet)
     # mytrainer.train(mydata,epoches=5)

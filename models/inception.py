@@ -6,6 +6,8 @@ import tensorflow as tf
 import tensorflow.keras as k
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, AveragePooling2D, BatchNormalization, ReLU, GlobalAvgPool2D
 
+from utils.layers import Conv2D_BN
+
 class InceptionV1Module(k.Model):
   def __init__(self, x1, reduce_x3, x3, reduce_x5, x5, pool_proj):
     super(InceptionV1Module,self).__init__()
@@ -75,16 +77,6 @@ def InceptionV1(input_shape, num_classes):
   output = Dense(units = num_classes , activation="softmax")(output)
   return k.Model(inputs=inputs, outputs = [output, auxiliary1, auxiliary2])
 
-
-class Conv2D_BN(k.layers.Layer):
-  def __init__(self, filters,kernel_size, strides=1, padding="same"):
-    super(Conv2D_BN, self).__init__()
-    self.conv = Conv2D(filters, kernel_size, strides, padding, kernel_initializer="normal")
-    self.bn = BatchNormalization()
-  def call(self, x):
-    x = self.conv(x)
-    x = self.bn(x)
-    return k.activations.relu(x)
 
 class InceptionV3ModuleA(k.layers.Layer):
   def __init__(self, pool_proj):
